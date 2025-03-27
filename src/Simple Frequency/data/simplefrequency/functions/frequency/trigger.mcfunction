@@ -1,6 +1,5 @@
-# Copy frequency and reset trigger
+# Copy frequency
 scoreboard players operation frequency simplefrequency = @s frequency
-scoreboard players set @s frequency -1
 
 # Return if not holding item
 execute unless predicate simplefrequency:item/holding/transceiver run return 0

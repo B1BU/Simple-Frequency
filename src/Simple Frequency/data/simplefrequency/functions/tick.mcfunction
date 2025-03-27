@@ -1,2 +1,2 @@
 # Player loop
-execute as @a run function simplefrequency:loop/player
+execute as @a run function simplefrequency:player/tick
