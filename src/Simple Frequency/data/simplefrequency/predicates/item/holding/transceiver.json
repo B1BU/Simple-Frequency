@@ -3,11 +3,11 @@
 	"terms": [
 		{
 			"condition": "reference",
-			"name": "simplefrequency:item/holding/transceiver.mainhand"
+			"name": "simplefrequency:item/holding/transceiver/mainhand"
 		},
 		{
 			"condition": "reference",
-			"name": "simplefrequency:item/holding/transceiver.offhand"
+			"name": "simplefrequency:item/holding/transceiver/offhand"
 		}
 	]
 }

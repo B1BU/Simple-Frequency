@@ -1,0 +1,38 @@
+[
+	{
+		"function": "set_nbt",
+		"tag": "{modulation:AM}",
+		"conditions": [
+			{
+				"condition": "entity_properties",
+				"entity": "this",
+				"predicate": {
+					"equipment": {
+						"mainhand": {
+							"items": ["simpleradio:transceiver"],
+							"nbt": "{modulation:FM}"
+						}
+					}
+				}
+			}
+		]
+	},
+	{
+		"function": "set_nbt",
+		"tag": "{modulation:FM}",
+		"conditions": [
+			{
+				"condition": "entity_properties",
+				"entity": "this",
+				"predicate": {
+					"equipment": {
+						"mainhand": {
+							"items": ["simpleradio:transceiver"],
+							"nbt": "{modulation:AM}"
+						}
+					}
+				}
+			}
+		]
+	}
+]
