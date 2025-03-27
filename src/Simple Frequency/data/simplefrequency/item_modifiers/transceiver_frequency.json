@@ -1,0 +1,14 @@
+{
+	"function": "copy_nbt",
+	"source": {
+		"type": "storage",
+		"source": "simplefrequency:this"
+	},
+	"ops": [
+		{
+			"op": "replace",
+			"source": "frequency",
+			"target": "frequency"
+		}
+	]
+}
