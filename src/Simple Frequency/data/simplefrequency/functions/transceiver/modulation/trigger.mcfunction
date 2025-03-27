@@ -1,8 +1,9 @@
 # Return if not holding item
 execute unless predicate simplefrequency:item/holding/transceiver run return 0
 
-# Toggle modulation
-
+# Change modulation
+execute if score @s modulation matches 1 run function simplefrequency:transceiver/modulation/set/am
+execute if score @s modulation matches 2 run function simplefrequency:transceiver/modulation/set/fm
 
 # Play sound effect
-playsound simpleradio:radio_close player @s ~ ~ ~
+function simplefrequency:transceiver/play_sound
