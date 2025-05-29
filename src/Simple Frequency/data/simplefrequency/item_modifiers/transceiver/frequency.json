@@ -2,12 +2,12 @@
 	"function": "copy_nbt",
 	"source": {
 		"type": "storage",
-		"source": "simplefrequency:this"
+		"source": "simplefrequency:data"
 	},
 	"ops": [
 		{
 			"op": "replace",
-			"source": "frequency",
+			"source": "temp.frequency",
 			"target": "frequency"
 		}
 	]
