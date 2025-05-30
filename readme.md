@@ -1,21 +1,28 @@
-Addon for [Simple Voice Radio](https://modrinth.com/mod/simple-voice-radio) that lets you change the frequency and modulation of held transceivers with trigger commands
+Datapack addon for [Simple Radio](https://modrinth.com/mod/simple-radio/) that lets you change the frequency and modulation of tunable items on the fly using trigger commands
 
 ## Commands
 
-| Command | Description |
-| :--- | :--- |
-| `/trigger frequency set [0-999]` | Sets the frequency |
-| `/trigger frequency` | Resets the frequency |
-| `/trigger modulation set [1\|2]` | Sets the modulation type: `1` for AM, `2` for FM |
-| `/trigger modulation` | Toggles the modulation between AM and FM |
+| Command                                | Description                            |   | Before    | Input | After     |
+| :-                                     | :-                                     | - | :-:       | -:    | :-:       |
+| /trigger frequency                     | Resets frequency                       | → | 314.03 FM |       | 000.00 FM |
+| /trigger frequency set \<frequency\>   | Tunes item into frequency (100x scale) | → | 000.00 FM | 31403 | 314.03 FM |
+| /trigger modulation                    | Flips modulation between AM and FM     | → | 123.45 AM |       | 123.45 FM |
+| /trigger modulation set \<modulation\> | Changes modulation to AM (1) or FM (2) | → | 123.45 FM |     1 | 123.45 AM |
+
+## Tunable Items
+
+| Item | Tunable |
+| :--- | :---: |
+| Transceiver | Yes |
+| Radio | Yes |
+| Transmitter | Yes |
+| Receiver | Yes |
+| Spuddie Talkie | No |
+| Walkie Talkie | No |
 
 ## Notes
 
-This addon was originally created just for my server but I decided to share it in case others may find it useful
-
-Feel free to suggest improvements, report bugs or request compatibility with other Minecraft versions
-
-## Thanks!
+Feel free to suggest improvements, report bugs or request compatibility with other Minecraft versions on my [Discord Server](https://discord.com/invite/JsrG8EDdnZ)
 
 If you enjoy this project, please consider showing me some support in whatever ways you can!
 
