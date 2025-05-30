@@ -6,9 +6,9 @@
 	},
 	"ops": [
 		{
-			"op": "replace",
-			"source": "temp.frequency",
-			"target": "frequency"
+			"op": "merge",
+			"source": "temp.item",
+			"target": "{}"
 		}
 	]
 }

@@ -1,0 +1,1 @@
+# title @s actionbar {"translate": "%s is already the current modulation", "color": "red", "with": [{"storage": "simplefrequency:data", "nbt": "temp.item.modulation", "color": "yellow"}]}

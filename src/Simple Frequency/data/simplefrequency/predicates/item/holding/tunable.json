@@ -1,0 +1,13 @@
+{
+	"condition": "any_of",
+	"terms": [
+		{
+			"condition": "reference",
+			"name": "simplefrequency:item/holding/tunable/mainhand"
+		},
+		{
+			"condition": "reference",
+			"name": "simplefrequency:item/holding/tunable/offhand"
+		}
+	]
+}

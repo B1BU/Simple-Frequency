@@ -1,5 +1,5 @@
 {
 	"values": [
-		"simplefrequency:tick"
+		"simplefrequency:on_tick"
 	]
 }

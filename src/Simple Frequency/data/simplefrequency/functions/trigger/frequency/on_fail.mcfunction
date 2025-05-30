@@ -1,0 +1,1 @@
+# title @s actionbar {"translate": "%s is already the current frequency", "color": "red", "with": [{"storage": "simplefrequency:data", "nbt": "temp.frequency", "color": "yellow"}]}

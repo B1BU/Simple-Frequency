@@ -1,0 +1,8 @@
+{
+	"values": [
+		"simpleradio:transceiver",
+		"simpleradio:radio",
+		"simpleradio:transmitter",
+		"simpleradio:receiver"
+	]
+}

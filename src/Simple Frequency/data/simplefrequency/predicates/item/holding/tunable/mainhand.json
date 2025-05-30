@@ -4,9 +4,7 @@
 	"predicate": {
 		"equipment": {
 			"mainhand": {
-				"items": [
-					"simpleradio:transceiver"
-				]
+				"tag": "simplefrequency:tunable"
 			}
 		}
 	}
