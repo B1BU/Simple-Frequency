@@ -11,14 +11,14 @@ Datapack addon for [Simple Radio](https://modrinth.com/mod/simple-radio/) that l
 
 ## Tunable Items
 
-| Item | Tunable |
-| :--- | :---: |
-| Transceiver | Yes |
-| Radio | Yes |
-| Transmitter | Yes |
-| Receiver | Yes |
-| Spuddie Talkie | No |
-| Walkie Talkie | No |
+| Item           | Tunable |
+| :-             | :-:     |
+| Transceiver    | Yes     |
+| Radio          | Yes     |
+| Transmitter    | Yes     |
+| Receiver       | Yes     |
+| Spuddie Talkie | No      |
+| Walkie Talkie  | No      |
 
 ***
 
