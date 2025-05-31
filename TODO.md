@@ -1,2 +1,0 @@
-- Create new icon
-- Add icon to pack.png
