@@ -1,4 +1,4 @@
-Datapack addon for [Simple Radio](https://modrinth.com/mod/simple-radio/) that lets you change the frequency and modulation of tunable items on the fly using trigger commands
+This datapack addon for [Simple Radio](https://modrinth.com/mod/simple-radio/) lets you change the frequency and modulation of tunable items on the fly using trigger commands
 
 ## Commands
 
