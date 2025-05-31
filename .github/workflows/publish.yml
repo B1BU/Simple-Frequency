@@ -31,7 +31,7 @@ jobs:
       - name: Extract changelog
         id: changelog
         run: |
-          changelog=$(awk "/^## ${VERSION//./\\.}/ {flag=1; next} /^## / {flag=0} flag" changelog.md)
+          changelog=$(awk "/^## \[${VERSION//./\\.}\]/ {flag=1; next} /^## / {flag=0} flag" changelog.md)
           changelog="${changelog//'%'/'%25'}"
           {
             echo 'log<<EOF'
