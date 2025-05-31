@@ -55,5 +55,15 @@ jobs:
         with:
           modrinth-id: ${{ env.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          name: Version ${{ env.VERSION }}
           version: ${{ env.VERSION }}
+          version-type: release
+          loaders: |
+            datapack
+          dependencies: |
+            simple-radio
+          game-versions: |
+            [1.20,1.20.6)
           changelog: ${{ steps.changelog.outputs.log }}
+          files: ${{ env.ZIP_NAME }}
