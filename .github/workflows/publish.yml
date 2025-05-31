@@ -23,8 +23,10 @@ jobs:
       - name: Set variables
         run: |
           echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
-          ZIP_NAME="${PROJECT_NAME// /-}-${GITHUB_REF_NAME}.zip"
+          ZIP_NAME="${PROJECT_NAME} ${GITHUB_REF_NAME}.zip"
+          ZIP_NAME_NO_SPACES="${ZIP_NAME// /-}"
           echo "ZIP_NAME=$ZIP_NAME" >> "$GITHUB_ENV"
+          echo "ZIP_NAME_NO_SPACES=$ZIP_NAME_NO_SPACES" >> "$GITHUB_ENV"
 
       - name: Extract changelog
         id: changelog
@@ -41,11 +43,12 @@ jobs:
         run: |
           cd "src/${PROJECT_NAME}"
           zip -r "$OLDPWD/${ZIP_NAME}" ./*
+          cp "$OLDPWD/${ZIP_NAME}" "$OLDPWD/${ZIP_NAME_NO_SPACES}"
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ env.ZIP_NAME }}
+          files: ${{ env.ZIP_NAME_NO_SPACES }}
           body: ${{ steps.changelog.outputs.log }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
