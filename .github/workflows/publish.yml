@@ -23,12 +23,13 @@ jobs:
       - name: Set variables
         run: |
           echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
-          echo "ZIP_NAME=${PROJECT_NAME} ${GITHUB_REF_NAME}.zip" >> "$GITHUB_ENV"
+          ZIP_NAME="${PROJECT_NAME// /_}_${GITHUB_REF_NAME}.zip"
+          echo "ZIP_NAME=$ZIP_NAME" >> "$GITHUB_ENV"
 
       - name: Extract changelog
         id: changelog
         run: |
-          changelog=$(awk "/## \\${VERSION//./\\.}\\/,/^## /" changelog.md | sed '$d')
+          changelog=$(awk "/^## ${VERSION//./\\.}/ {flag=1; next} /^## / {flag=0} flag" changelog.md)
           changelog="${changelog//'%'/'%25'}"
           changelog="${changelog//$'\n'/'%0A'}"
           changelog="${changelog//$'\r'/'%0D'}"
@@ -36,7 +37,7 @@ jobs:
 
       - name: Create ZIP archive
         run: |
-          zip -r "$ZIP_NAME" "src/$PROJECT_NAME"
+          cd "src/${PROJECT_NAME}" && zip -r "$OLDPWD/$ZIP_NAME" ./*
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
