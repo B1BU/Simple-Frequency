@@ -20,47 +20,53 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set variables
+      - name: Set Variables
         run: |
-          echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
-          ZIP_NAME="${PROJECT_NAME} ${GITHUB_REF_NAME}.zip"
-          ZIP_NAME_NO_SPACES="${ZIP_NAME// /-}"
-          echo "ZIP_NAME=$ZIP_NAME" >> "$GITHUB_ENV"
-          echo "ZIP_NAME_NO_SPACES=$ZIP_NAME_NO_SPACES" >> "$GITHUB_ENV"
+          echo "VERSION=${GITHUB_REF_NAME}" >> "$GITHUB_ENV"
 
-      - name: Extract changelog
+          echo "VERSION_NO_V=${VERSION#v}" >> "$GITHUB_ENV"
+
+          DATAPACK_FOLDER="${PROJECT_NAME}"
+          echo "DATAPACK_FOLDER=$DATAPACK_FOLDER" >> "$GITHUB_ENV"
+
+          DATAPACK_FILE="${PROJECT_NAME} ${GITHUB_REF_NAME}.zip"
+          echo "DATAPACK_FILE=$DATAPACK_FILE" >> "$GITHUB_ENV"
+
+          DATAPACK_FILE_NO_SPACES="${DATAPACK_FILE// /-}"
+          echo "DATAPACK_FILE_NO_SPACES=$DATAPACK_FILE_NO_SPACES" >> "$GITHUB_ENV"
+
+      - name: Extract Changelog
         id: changelog
         run: |
           changelog=$(awk "/^## \[${VERSION//./\\.}\]/ {flag=1; next} /^## / {flag=0} flag" CHANGELOG.md)
           changelog="${changelog//'%'/'%25'}"
-          {
-            echo 'log<<EOF'
-            echo "$changelog"
-            echo 'EOF'
-          } >> "$GITHUB_OUTPUT"
+          echo "log<<EOF" >> "$GITHUB_OUTPUT"
+          echo "${changelog}" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
 
-      - name: Create ZIP archive
+      - name: Zip Data Pack
         run: |
-          cd "src/${PROJECT_NAME}"
-          zip -r "$OLDPWD/${ZIP_NAME}" ./*
-          cp "$OLDPWD/${ZIP_NAME}" "$OLDPWD/${ZIP_NAME_NO_SPACES}"
+          cd "src/${DATAPACK_FOLDER}"
+          zip -r "$OLDPWD/${DATAPACK_FILE}" ./*
+          cp "$OLDPWD/${DATAPACK_FILE}" "$OLDPWD/${DATAPACK_FILE_NO_SPACES}"
 
-      - name: Create GitHub release
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ env.ZIP_NAME_NO_SPACES }}
+          files: |
+            ${{ env.DATAPACK_FILE_NO_SPACES }}
           body: ${{ steps.changelog.outputs.log }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish datapack
+      - name: Publish Datapack
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: ${{ env.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-          name: Version ${{ env.VERSION }}
-          version: ${{ env.VERSION }}
+          name: ${{ env.PROJECT_NAME }} ${{ env.VERSION }}
+          version: ${{ env.VERSION_NO_V }}
           version-type: release
           loaders: |
             datapack
@@ -69,4 +75,4 @@ jobs:
           game-versions: |
             [1.20,1.20.6]
           changelog: ${{ steps.changelog.outputs.log }}
-          files: ${{ env.ZIP_NAME }}
+          files: ${{ env.DATAPACK_FILE }}
