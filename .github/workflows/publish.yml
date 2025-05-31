@@ -8,18 +8,28 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     env:
       PROJECT_NAME: Simple Frequency
       MODRINTH_ID: JUDvxSi8
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set variables
         run: |
           echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
           echo "ZIP_NAME=${PROJECT_NAME} ${GITHUB_REF_NAME}.zip" >> "$GITHUB_ENV"
+
+      - name: Extract changelog
+        id: changelog
+        run: |
+          changelog=$(awk "/## \\${VERSION//./\\.}\\/,/^## /" changelog.md | sed '$d')
+          changelog="${changelog//'%'/'%25'}"
+          changelog="${changelog//$'\n'/'%0A'}"
+          changelog="${changelog//$'\r'/'%0D'}"
+          echo "log=$changelog" >> "$GITHUB_OUTPUT"
 
       - name: Create ZIP archive
         run: |
@@ -29,12 +39,14 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ env.ZIP_NAME }}
+          body: ${{ steps.changelog.outputs.log }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish datapack
-        uses: Kir-Antipov/mc-publish@v3.3
-        with:
-          modrinth-id: ${{ env.MODRINTH_ID }}
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          version: ${{ env.VERSION }}
+      # - name: Publish datapack
+      #   uses: Kir-Antipov/mc-publish@v3.3
+      #   with:
+      #     modrinth-id: ${{ env.MODRINTH_ID }}
+      #     modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+      #     version: ${{ env.VERSION }}
+      #     changelog: ${{ steps.changelog.outputs.log }}
