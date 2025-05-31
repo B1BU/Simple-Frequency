@@ -50,10 +50,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Publish datapack
-      #   uses: Kir-Antipov/mc-publish@v3.3
-      #   with:
-      #     modrinth-id: ${{ env.MODRINTH_ID }}
-      #     modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-      #     version: ${{ env.VERSION }}
-      #     changelog: ${{ steps.changelog.outputs.log }}
+      - name: Publish datapack
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: ${{ env.MODRINTH_ID }}
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          version: ${{ env.VERSION }}
+          changelog: ${{ steps.changelog.outputs.log }}
