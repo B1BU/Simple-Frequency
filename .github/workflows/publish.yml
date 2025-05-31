@@ -39,7 +39,8 @@ jobs:
 
       - name: Create ZIP archive
         run: |
-          cd "src/${PROJECT_NAME}" && zip -r "$OLDPWD/$ZIP_NAME" ./*
+          cd "src/${PROJECT_NAME}"
+          zip -r "$OLDPWD/${ZIP_NAME}" ./*
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
