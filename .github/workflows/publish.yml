@@ -64,6 +64,6 @@ jobs:
           dependencies: |
             simple-radio
           game-versions: |
-            [1.20,1.20.6)
+            [1.20,1.20.6]
           changelog: ${{ steps.changelog.outputs.log }}
           files: ${{ env.ZIP_NAME }}
