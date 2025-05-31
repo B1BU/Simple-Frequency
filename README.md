@@ -5,11 +5,13 @@ This datapack addon for [Simple Radio](https://modrinth.com/mod/simple-radio/) l
 | Command                                | Description                            |     | Before    | Input | After     |
 | :-                                     | :-                                     | :-: | :-:       | -:    | :-:       |
 | /trigger frequency                     | Resets frequency                       |  →  | 314.03 FM |       | 000.00 FM |
-| /trigger frequency set \<frequency\>   | Tunes item into frequency (100x scale) |  →  | 000.00 FM | 31403 | 314.03 FM |
+| /trigger frequency set \<frequency\>   | Tunes into frequency (100x scale)      |  →  | 000.00 FM | 31403 | 314.03 FM |
 | /trigger modulation                    | Flips modulation between AM and FM     |  →  | 123.45 AM |       | 123.45 FM |
 | /trigger modulation set \<modulation\> | Changes modulation to AM (1) or FM (2) |  →  | 123.45 FM | 1     | 123.45 AM |
 
 ## Tunable Items
+
+Items with normally randomized frequencies are not tunable
 
 | Item           | Tunable |
 | :-             | :-:     |
