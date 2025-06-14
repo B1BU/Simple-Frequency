@@ -24,13 +24,13 @@ Items with normally randomized frequencies are not tunable
 
 ***
 
-Feel free to suggest improvements, report bugs or request compatibility with other Minecraft versions on the [GitHub Repo](https://github.com/B1BU/Simple-Frequency) or my [Discord Server](https://discord.com/invite/JsrG8EDdnZ)
-
 If you make content using my datapacks, please give me proper credit
 
-If you enjoy this project, please consider showing me some support in whatever ways you can
+If you enjoy this project, please consider supporting me with a donation or some kind words
 
-Also check out my other projects [Planet Minecraft](https://www.planetminecraft.com/member/b1bu/) while I procrastinate posting them here!
+Join my [Discord Server](https://discord.com/invite/JsrG8EDdnZ) to get support, submit suggestions, keep up to date with my projects, or just chat
+
+Also check out my other projects on [Planet Minecraft](https://www.planetminecraft.com/member/b1bu) while I procrastinate posting them here
 
 ***
 
