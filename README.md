@@ -1,6 +1,6 @@
 This data pack addon for [Simple Radio](https://modrinth.com/mod/simple-radio/) lets you change the frequency and modulation of tunable items on the fly using trigger commands
 
-## Commands
+<center><h2><strong>Commands</strong></h2></center>
 
 | Command                                | Description                            |     | Before    | Input | After     |
 | :-                                     | :-                                     | :-: | :-:       | -:    | :-:       |
@@ -9,7 +9,7 @@ This data pack addon for [Simple Radio](https://modrinth.com/mod/simple-radio/) 
 | /trigger modulation                    | Flips modulation between AM and FM     |  →  | 123.45 AM |       | 123.45 FM |
 | /trigger modulation set \<modulation\> | Changes modulation to AM (1) or FM (2) |  →  | 123.45 FM | 1     | 123.45 AM |
 
-## Tunable Items
+<center><h2><strong>Tunable items</strong></h2></center>
 
 Items with normally randomized frequencies are not tunable
 
