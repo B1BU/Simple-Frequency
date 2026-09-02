@@ -1,6 +1,11 @@
 {
 	"pack": {
 		"pack_format": 15,
-		"description": {"translate": "Made by %s","with": [{"text": "B1BU","color": "#ACCC00"}]}
+		"description": {
+			"translate": "Tune Simple Radio items using trigger commands | %s",
+			"with": [
+				{"text": "B1BU", "color": "#ACCC00"}
+			]
+		}
 	}
 }
