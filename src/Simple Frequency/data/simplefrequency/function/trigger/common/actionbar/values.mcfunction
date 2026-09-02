@@ -1,0 +1,1 @@
+title @s actionbar [{"storage": "simplefrequency:data", "nbt": "temp.values.frequency"}, {"storage": "simplefrequency:data", "nbt": "temp.values.modulation"}]

@@ -1,0 +1,2 @@
+data modify storage simplefrequency:data temp.values.frequency set from entity @s Inventory[{Slot:-106b}].components.simpleradio:frequency
+data modify storage simplefrequency:data temp.values.modulation set from entity @s Inventory[{Slot:-106b}].components.simpleradio:modulation

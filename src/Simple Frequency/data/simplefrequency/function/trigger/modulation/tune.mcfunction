@@ -1,0 +1,2 @@
+execute if score hand simplefrequency-temp matches 1 run return run function simplefrequency:trigger/modulation/tune/slot/mainhand
+return run function simplefrequency:trigger/modulation/tune/slot/offhand

@@ -1,0 +1,1 @@
+function simplefrequency:trigger/logic

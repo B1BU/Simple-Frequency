@@ -1,0 +1,3 @@
+function simplefrequency:trigger/frequency/logic
+
+function simplefrequency:trigger/modulation/logic

@@ -1,0 +1,2 @@
+data modify storage simplefrequency:data temp.values.frequency set from entity @s SelectedItem.components.simpleradio:frequency
+data modify storage simplefrequency:data temp.values.modulation set from entity @s SelectedItem.components.simpleradio:modulation
