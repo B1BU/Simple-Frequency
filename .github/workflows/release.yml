@@ -1,0 +1,92 @@
+name: Create New Release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - '[0-9]*.[0-9]*-[0-9]*.[0-9]*.[0-9]*-*' # '1.0', '1.0.0-alpha'
+      - '[0-9]*.[0-9]*.[0-9]*-[0-9]*.[0-9]*.[0-9]*-*' # '1.0.0', '1.0.0-alpha'
+
+jobs:
+  publish:
+    name: Publish Release
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_NAME: Simple Frequency
+      SRC_NAME: Simple Frequency
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set Variables
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+
+          MINECRAFT_VERSION="${TAG%%-*}"
+          VERSION="${TAG#*-}"
+          VERSION_NUM="${VERSION%%-*}"
+
+          if [[ "$VERSION" == *-b* ]]; then
+            VERSION_TYPE='beta'
+          elif [[ "$VERSION" == *-a* ]]; then
+            VERSION_TYPE='alpha'
+          else
+            major_number="${VERSION%%.*}"
+
+            if [[ "$major_number" == '0' ]]; then
+              VERSION_TYPE='alpha'
+            else
+              VERSION_TYPE='release'
+            fi
+          fi
+
+          RELEASE_NAME="$PROJECT_NAME $VERSION"
+          SOURCE_FOLDER="src/$SRC_NAME"
+
+          OUTPUT_FILE_BASENAME="$SRC_NAME $MINECRAFT_VERSION-$VERSION"
+          OUTPUT_FILE_GITHUB="${OUTPUT_FILE_BASENAME// /-}.zip"
+          OUTPUT_FILE_MODRINTH="$OUTPUT_FILE_BASENAME.zip"
+
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "VERSION_NUM=$VERSION_NUM" >> "$GITHUB_ENV"
+          echo "VERSION_TYPE=$VERSION_TYPE" >> "$GITHUB_ENV"
+          echo "RELEASE_NAME=$RELEASE_NAME" >> "$GITHUB_ENV"
+          echo "SOURCE_FOLDER=$SOURCE_FOLDER" >> "$GITHUB_ENV"
+          echo "OUTPUT_FILE_GITHUB=$OUTPUT_FILE_GITHUB" >> "$GITHUB_ENV"
+          echo "OUTPUT_FILE_MODRINTH=$OUTPUT_FILE_MODRINTH" >> "$GITHUB_ENV"
+
+      - name: Package Data Pack
+        working-directory: ${{ env.SOURCE_FOLDER }}
+        run: |
+          zip -r "output.zip" .
+          cp "output.zip" "$GITHUB_WORKSPACE/${{ env.OUTPUT_FILE_GITHUB }}"
+          cp "output.zip" "$GITHUB_WORKSPACE/${{ env.OUTPUT_FILE_MODRINTH }}"
+
+      - name: MC Publish
+        uses: Kira-NT/mc-publish@v3
+        with:
+          loaders: datapack
+          environment: server
+          game-versions: |
+            [1.20,1.20.6]
+          game-version-filter: releases
+          dependencies: |
+            simple-radio(required){modrinth:S7b8mMXS}
+
+          # Automated
+          name:           ${{ env.RELEASE_NAME }}
+          version:        ${{ env.VERSION }}
+          version-type:   ${{ env.VERSION_TYPE }}
+          changelog-file: changelogs/${{ env.VERSION_NUM }}.md
+
+          # GitHub
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-files: |
+            ${{ env.OUTPUT_FILE_GITHUB }}
+
+          # Modrinth
+          modrinth-id: JUDvxSi8
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-files: |
+            ${{ env.OUTPUT_FILE_MODRINTH }}
