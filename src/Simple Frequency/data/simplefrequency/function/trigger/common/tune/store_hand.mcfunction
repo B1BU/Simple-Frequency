@@ -1,1 +1,1 @@
-return run execute store result score hand simplefrequency-temp run function simplefrequency:item/tunable/get_hand
+return run execute store result score hand simplefrequency-temp run function simplefrequency:trigger/common/tune/get_hand

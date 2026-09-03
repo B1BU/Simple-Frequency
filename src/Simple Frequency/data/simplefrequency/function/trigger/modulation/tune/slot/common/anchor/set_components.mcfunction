@@ -1,0 +1,2 @@
+data modify entity @s HandItems[0].components."simpleradio:modulation" set from storage simplefrequency:data temp.values.modulation
+data remove entity @s HandItems[0].components."simpleradio:reference"

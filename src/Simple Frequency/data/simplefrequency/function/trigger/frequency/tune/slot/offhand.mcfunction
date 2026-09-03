@@ -1,4 +1,8 @@
 function simplefrequency:trigger/common/tune/store_components/offhand
 execute unless function simplefrequency:trigger/frequency/tune/try run return fail
-function simplefrequency:item/tunable/frequency/set/offhand with storage simplefrequency:data temp.values
+
+tag @s add simplefrequency-this
+execute summon armor_stand run function simplefrequency:trigger/frequency/tune/slot/offhand/anchor
+tag @s remove simplefrequency-this
+
 return 1
