@@ -1,6 +1,6 @@
 execute unless score @s modulation matches -2147483648..2147483647 run return fail
 
-execute unless score @s modulation matches 0..2 run return fail
+execute unless score @s modulation matches 0..2 run return run function simplefrequency:trigger/common/error/value_out_of_range
 
 execute unless function simplefrequency:trigger/common/tune/store_hand run return fail
 
