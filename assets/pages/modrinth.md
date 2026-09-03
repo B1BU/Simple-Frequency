@@ -24,7 +24,6 @@ Items with normally randomized frequencies are not tunable
 | Transmitter    | Yes     |
 | Receiver       | Yes     |
 | Spuddie Talkie | No      |
-| Walkie Talkie  | No      |
 
 ***
 
